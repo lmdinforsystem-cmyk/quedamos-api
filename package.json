@@ -1,0 +1,28 @@
+{
+  "name": "quedamos-api",
+  "version": "1.0.0",
+  "description": "API REST para organizar actividades y conocer gente. Node.js, Express, MongoDB y JWT.",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmdinforsystem-cmyk/quedamos-api.git"
+  },
+  "keywords": ["api", "express", "mongodb", "jwt", "actividades"],
+  "author": "Leticia Medina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lmdinforsystem-cmyk/quedamos-api/issues"
+  },
+  "homepage": "https://github.com/lmdinforsystem-cmyk/quedamos-api#readme",
+  "dependencies": {
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0"
+  }
+}
