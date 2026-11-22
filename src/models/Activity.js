@@ -1,7 +1,15 @@
 const mongoose = require('mongoose');
 
 //categorias permitidas las exportamos para reutilizarlas
-const CATEGORIES = ['deporte', 'cultura', 'ocio', 'gastronomía', 'juegos', 'citas', 'otros'];
+const CATEGORIES = [
+    'deporte', 
+    'cultura', 
+    'ocio', 
+    'gastronomía', 
+    'juegos', 
+    'citas', 
+    'otros'
+];
 
 //subesquema de un participante, no es una colección 
 //vive dentro de cada actividad (embebido)
@@ -44,7 +52,7 @@ const activitySchema = new mongoose.Schema(
         category:  {
             type: String,
             required: [true, 'La categoría es obligatoria'],
-            lowecase: true,
+            lowercase: true,
             enum: {
                 values: CATEGORIES,
                 message: 'La categoría no es válida',
