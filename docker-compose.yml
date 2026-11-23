@@ -1,0 +1,13 @@
+services:
+  mongo:
+    image: mongo:8
+    container_name: quedamos-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - quedamos-data:/data/db
+    restart: unless-stopped
+
+volumes:
+  quedamos-data:
+    name: quedamos-data
