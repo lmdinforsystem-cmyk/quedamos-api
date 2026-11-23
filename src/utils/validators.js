@@ -1,5 +1,5 @@
 //Comprueba que la contraseña cumple los requisitos mínimos
-function validatePassword(password) {
+export function validatePassword(password) {
     if (typeof password !== 'string' || password.length === 0) {
         return 'La contraeña es obligatoria';
     }
@@ -11,4 +11,3 @@ function validatePassword(password) {
     }
     return null;
 }
-export default { validatePassword };
