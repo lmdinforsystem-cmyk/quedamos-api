@@ -9,8 +9,9 @@ const { MONGO_URI } = process.env;
 
 // Arranca todo en orden: primero MongoDB, después el servidor
 async function startServer() {
-  if (!MONGO_URI) {
-    console.error('Falta la variable MONGO_URI en el archivo .env');
+    // Comprobamos que existen las variables imprescindibles
+  if (!MONGO_URI || !process.env.JWT_SECRET) {
+    console.error('Faltan variables en el .env (MONGO_URI o JWT_SECRET)');
     process.exit(1);
   }
 
