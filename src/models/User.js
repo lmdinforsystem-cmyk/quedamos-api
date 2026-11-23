@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
+import { Schema, model } from 'mongoose';
 
 //Esquema: define la forma  y las reglas de cada usuario
-const userSchema = new mongoose.Schema(
+const userSchema = new Schema(
     {
         name: {
             type: String,
@@ -39,4 +39,4 @@ const userSchema = new mongoose.Schema(
 );
 
 //CREAR EL MODELO A PARTIR DEL ESQUEMA Y LO EXPORTAMOS
-module.exports = mongoose.model('User', userSchema);
+export default model('User', userSchema);

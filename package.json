@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "API REST para organizar actividades y conocer gente. Node.js, Express, MongoDB y JWT.",
   "main": "src/server.js",
+  "type": "module",
   "scripts": {
     "dev": "node --watch src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "engines": {
     "node": ">=22"
@@ -32,5 +35,8 @@
     "dotenv": "^18.0.10",
     "express": "^5.3.0",
     "mongoose": "^9.12.3"
+  },
+  "devDependencies": {
+    "vitest": "^5.1.1"
   }
 }

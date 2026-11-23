@@ -11,4 +11,4 @@ function validatePassword(password) {
     }
     return null;
 }
-module.exports = { validatePassword };
+export default { validatePassword };

@@ -1,8 +1,9 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
+// Conecta con MongoDB. Recibe la dirección como parámetro
 async function connectDB(uri) {
   await mongoose.connect(uri);
   console.log(`MongoDB conectado: ${mongoose.connection.name}`);
 }
 
-module.exports = connectDB;
+export default connectDB;
