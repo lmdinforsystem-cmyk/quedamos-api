@@ -13,5 +13,19 @@ export async function register(req, res) {
         user,
      });
 
+}
+
+// Comprueba las credenciales y devuelve el token
+export async function login(req, res) {
+   const { email, password } = req.body ?? {};
+
+   // El servicio comprueba las credenciales y genera el token
+   const { token, user } = await authService.loginUser({email, password});
+
+   res.status(200).json({
+      message: 'Login correcto',
+      token,
+      user,
+   });
 
 }
