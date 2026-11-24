@@ -54,3 +54,15 @@ export async function loginUser({ email, password }) {
   return { token, user: toPublicUser(user) };
 
 }
+
+// Devuelve los datos públicos del usuario con ese id
+export async function getUserById(id) {
+  const user = await User.findById(id);
+
+  //el token puede ser válido, pero el usuario  haber sido borrado
+  if (!user) {
+    throw new AppError('El usuario ya no existe', 404);
+  }
+
+  return toPublicUser(user);
+}
