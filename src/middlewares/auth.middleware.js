@@ -2,9 +2,9 @@ import AppError from '../utils/AppError.js';
 import { verifyToken } from '../utils/token.js';
 
 function getToken(req) {
-    const autorization = req.headers.autorization;
-    if (autorization?.startWith('Bearer')) {
-        return autorization.split(' ')[1];
+    const authorization = req.headers.authorization;
+    if (authorization?.startsWith('Bearer')) {
+        return authorization.split(' ')[1];
     }
 
     return undefined;

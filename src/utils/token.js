@@ -9,7 +9,7 @@ export function generateToken(user) {
             role: user.role
         },
         env.JWT_SECRET, 
-        {expiresIn: env.JWT_SECRET || '1d'}
+        {expiresIn: env.JWT_EXPIRES_IN}
     );
 }
 
