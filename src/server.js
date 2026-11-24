@@ -1,33 +1,24 @@
-// Primero cargamos las variables de entorno (debe ser el primer import)
-import './config/env.js';
+// Lo primero: carga y valida el .env (si falta algo, la aplicación no arranca)
+import { env } from './config/env.js';
 
 import app from './app.js';
 import connectDB from './config/db.js';
 
-const PORT = process.env.PORT || 3000;
-const { MONGO_URI } = process.env;
-
 // Arranca todo en orden: primero MongoDB, después el servidor
 async function startServer() {
-    // Comprobamos que existen las variables imprescindibles
-  if (!MONGO_URI || !process.env.JWT_SECRET) {
-    console.error('Faltan variables en el .env (MONGO_URI o JWT_SECRET)');
-    process.exit(1);
-  }
-
   try {
-    await connectDB(MONGO_URI);
+    await connectDB(env.MONGO_URI);
   } catch (error) {
     console.error('No se pudo conectar a MongoDB:', error.message);
     process.exit(1);
   }
 
-  app.listen(PORT, (error) => {
+  app.listen(env.PORT, (error) => {
     if (error) {
-      console.error(`No se pudo arrancar el servidor en el puerto ${PORT}:`, error.message);
+      console.error(`No se pudo arrancar el servidor en el puerto ${env.PORT}:`, error.message);
       process.exit(1);
     }
-    console.log(`Servidor escuchando en http://localhost:${PORT}`);
+    console.log(`Servidor escuchando en http://localhost:${env.PORT}`);
   });
 }
 

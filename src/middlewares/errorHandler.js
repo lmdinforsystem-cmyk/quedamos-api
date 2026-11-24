@@ -21,7 +21,7 @@ export function errorHandler(err, req, res, next) {
     //Valor repetido en un campo  unique (por ejemplo, el email)
     if (err.code === 11000) {
         const field = Object.keys(err.keyValue)[0];
-        return res.status(409).json({ error: `Ya existe un registro  con ese ${field}` });
+        return res.status(409).json({ error: `Ya existe un registro con ese ${field}` });
     }
 
     //Id con formato no válido 
