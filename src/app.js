@@ -1,24 +1,19 @@
 import express from 'express';
-import authRoutes from './routes/auth.routes.js';
-import { notFound, errorHandler } from './middlewares/errorHandler.js'; 
+import router from './routes/router.js';
+import { notFound, errorHandler } from './middlewares/errorHandler.js';
 
 const app = express();
 
-//1.Convierte el body JSON de las peticiones en req.body
+// 1. Convierte el body JSON de las peticiones en req.body
 app.use(express.json());
 
-//2. Ruta d eocmprobación
-app.get('/api/health', (req, res) => {
-    res.status(200).json({ status: "ok"});
-});
+// 2. Todas las rutas de la API cuelgan de /api
+app.use('/api', router);
 
-//3. Ruta de autenticación: todo lo de auth.routes.js
-app.use('/api/auth', authRoutes);
-
-//4. si ninguna ruta coincide -> 404 en JSON
+// 3. Si ninguna ruta coincide → 404 en JSON
 app.use(notFound);
 
-//5.Manejador de errores: 
+// 4. Manejador de errores: siempre el último
 app.use(errorHandler);
 
 export default app;
