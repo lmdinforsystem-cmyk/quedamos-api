@@ -11,3 +11,8 @@ export function validatePassword(password) {
     }
     return null;
 }
+
+export function isFutureDate(value, now = new Date()) {
+  const date = new Date(value);
+  return !Number.isNaN(date.getTime()) && date > now;
+}

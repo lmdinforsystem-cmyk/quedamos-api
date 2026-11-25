@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { validatePassword } from '../src/utils/validators.js';
+import { validatePassword, isFutureDate } from '../src/utils/validators.js';
+
 
 describe('validatePassword', () => {
   it('devuelve null si la contraseña es válida', () => {
@@ -18,5 +19,23 @@ describe('validatePassword', () => {
 
   it('rechaza valores que no son texto', () => {
     expect(validatePassword(12345678)).toBe('La contraseña es obligatoria');
+  });
+
+});
+
+describe('isFutureDate', () => {
+  // Fijamos el "ahora" para que el test dé siempre el mismo resultado
+  const now = new Date('2026-11-01T12:00:00Z');
+
+  it('acepta una fecha posterior', () => {
+    expect(isFutureDate('2026-12-01T10:00:00Z', now)).toBe(true);
+  });
+
+  it('rechaza una fecha anterior', () => {
+    expect(isFutureDate('2026-10-01T10:00:00Z', now)).toBe(false);
+  });
+
+  it('rechaza un texto que no es una fecha', () => {
+    expect(isFutureDate('patata', now)).toBe(false);
   });
 });
