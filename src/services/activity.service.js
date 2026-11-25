@@ -5,7 +5,7 @@ import { isFutureDate } from '../utils/validators.js';
 //Crea una actividad
 export async function createAtivity(data, userId) {
     // Si llega fecha, debe ser futura
-    if (data.date !== undefined && isFutureDate(data.date)) {
+    if (data.date !== undefined && !isFutureDate(data.date)) {
         throw new AppError('La fecha debe ser una fecha válida y futura', 400);
     }
 

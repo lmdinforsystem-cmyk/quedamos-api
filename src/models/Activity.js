@@ -83,7 +83,7 @@ const activitySchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-    toJSON: { virtuals: true }, // incluye los campos virtuales al responder
+    toJSON: { virtuals: true, versionKey: false, id: false}, // incluye los campos virtuales al responder
   }
 );
 
