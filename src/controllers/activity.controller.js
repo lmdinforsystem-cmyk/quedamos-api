@@ -23,3 +23,18 @@ export async function create(req, res) {
 
     res.status(201).json({ activity });
 }
+
+// PATCH /api/activities/:id
+// Modifica una actividad (solo el creador o un admin)
+export async function update(req, res) {
+    const activity = await activityService.updateActivity(req.params.id, req.body ?? {}, req.user);
+    res.status(200).json({ activity });
+}
+
+
+// DELETE /api/activities/:id
+// Borra una actividad (solo el creador o un admin)
+export async function remove(req, res) {
+    await activityService.deleteActivity(req.params.id, req.user);
+    res.status(200).json({ message: 'Actividad eliminada' });
+}
