@@ -24,7 +24,7 @@ export async function getActivities() {
 // Devuelve una actividad con el nombre de su creador y de sus participantes
 export async function getActivityById(id) {
     const activity = await Activity.findById(id)
-    .populate('creador', 'name')
+    .populate('creator', 'name')
     .populate('participants.user', 'name');
     
     if(!activity) {
