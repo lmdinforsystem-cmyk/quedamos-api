@@ -16,7 +16,7 @@ export async function getById(req, res) {
 export async function create(req, res) {
     const {title, description, city, category, date, maxParticipants } = req.body ?? {}
 
-    const activity = await activityService.createAtivity(
+    const activity = await activityService.createActivity(
         { title, description, city, category, date, maxParticipants },
         req.user.id
     );
